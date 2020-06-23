@@ -3,3 +3,5 @@ shop
 __pycache__
 0 old_version
 *.rar
+
+*_search
