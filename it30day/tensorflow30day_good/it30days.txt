@@ -1,0 +1,124 @@
+Day 1 類神經網路和計算圖語言
+https://ithelp.ithome.com.tw/articles/10216085
+2019-09-16 22:58:33
+renewang
+Day 2 動態計算圖：PyTorch's autograd
+https://ithelp.ithome.com.tw/articles/10216440
+2019-09-17 23:49:37
+renewang
+Day 3 靜態計算圖：Tensorflow
+https://ithelp.ithome.com.tw/articles/10217016
+2019-09-18 22:28:33
+renewang
+Day 4 偽動態計算圖： Tensorflow 的 Eager Mode
+https://ithelp.ithome.com.tw/articles/10217112
+2019-09-19 22:55:33
+renewang
+Day 5 Jax 來拯救：numpy-based 的動態計算圖
+https://ithelp.ithome.com.tw/articles/10217279
+2019-09-20 21:27:53
+renewang
+Day 6 Tensorflow 2.0
+https://ithelp.ithome.com.tw/articles/10217648
+2019-09-21 23:44:25
+renewang
+Day 7 邁向 Tensorflow 2.0 之路
+https://ithelp.ithome.com.tw/articles/10219255
+2019-09-22 23:39:11
+renewang
+Day 8: Tensorflow 在 2.0 很好，那麼 PyTorch 呢？
+https://ithelp.ithome.com.tw/articles/10219598
+2019-09-23 23:11:49
+renewang
+Day 9:  TorchScript 實例操作
+https://ithelp.ithome.com.tw/articles/10220347
+2019-09-24 23:45:06
+renewang
+Day 10: 利用  numpy 和 scipy 客製化 PyTorch  模型
+https://ithelp.ithome.com.tw/articles/10220783
+2019-09-25 23:48:06
+renewang
+Day 11:  中場休息 CMake 教學
+https://ithelp.ithome.com.tw/articles/10221101
+2019-09-26 23:32:35
+renewang
+Day 12:  PyTorch C++ front-end API
+https://ithelp.ithome.com.tw/articles/10221570
+2019-09-27 23:23:56
+renewang
+Day 13:  使用 python C extension 來擴充 PyTroch
+https://ithelp.ithome.com.tw/articles/10222139
+2019-09-28 23:45:13
+renewang
+Day 14: 使用 TorchScript 來擴充 PyTorch
+https://ithelp.ithome.com.tw/articles/10222484
+2019-09-29 23:13:00
+renewang
+Day 15: Tensorflow 2.0 再造訪 keras
+https://ithelp.ithome.com.tw/articles/10222889
+2019-09-30 23:31:45
+renewang
+Day 16: Tensorflow 2.0 再造訪 eager-execution
+https://ithelp.ithome.com.tw/articles/10223343
+2019-10-01 23:45:19
+renewang
+Day 17: Tensorflow 2.0 再造訪 tf.GradientTape
+https://ithelp.ithome.com.tw/articles/10223779
+2019-10-02 23:30:24
+renewang
+Day 18: Tensorflow 2.0 再造訪 tf.function
+https://ithelp.ithome.com.tw/articles/10224165
+2019-10-03 20:55:58
+renewang
+Day 19: Tensorflow 2.0 再造訪 AutoGraph
+https://ithelp.ithome.com.tw/articles/10224289
+2019-10-04 21:08:26
+renewang
+Day 20: Tensorflow 2.0 再造訪 tf.Tensor
+https://ithelp.ithome.com.tw/articles/10224898
+2019-10-05 23:42:29
+renewang
+Day 21: Tensorflow 2.0: 再造訪 Model Persistence
+https://ithelp.ithome.com.tw/articles/10225161
+2019-10-06 23:37:38
+renewang
+Day 22: Tensorflow 2.0: 再造訪 `tf.estimator` 和  `tf.data`
+https://ithelp.ithome.com.tw/articles/10225888
+2019-10-07 23:51:37
+renewang
+Day 23: Tensorflow 2.0: 再造訪 Distribute Strategy API
+https://ithelp.ithome.com.tw/articles/10226066
+2019-10-08 23:49:38
+renewang
+Day 24 插播 PyTorch  的 Distributed Training
+https://ithelp.ithome.com.tw/articles/10226382
+2019-10-09 23:49:35
+renewang
+Day 25: Tensorflow C++ front-end API
+https://ithelp.ithome.com.tw/articles/10226741
+2019-10-10 23:48:25
+renewang
+Day 26: Tensorflow 客製化一個 C++ 運算元
+https://ithelp.ithome.com.tw/articles/10227240
+2019-10-11 23:43:54
+renewang
+Day 27:  再造訪 ONNX  和它的 Python API
+https://ithelp.ithome.com.tw/articles/10227365
+2019-10-12 23:20:16
+renewang
+Day 28: 再造訪 ONNX Graph
+https://ithelp.ithome.com.tw/articles/10227825
+2019-10-13 23:49:03
+renewang
+Day 29: 再造訪 ONNX 和它的兄弟 ONNX-ML
+https://ithelp.ithome.com.tw/articles/10227457
+2019-10-14 22:11:55
+renewang
+Day 30: 再造訪 ONNX Runtime
+https://ithelp.ithome.com.tw/articles/10227964
+2019-10-15 18:19:35
+renewang
+Day 31 深度學習裡的冰與火之歌：不是最終的結尾
+https://ithelp.ithome.com.tw/articles/10228560
+2019-10-16 23:18:29
+renewang

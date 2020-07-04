@@ -3,9 +3,10 @@ import sys
 sys.path.append(r"C:\Users\TKU\Desktop\kong_model2\kong_util")
 from build_dataset_combine import Check_dir_exist_and_build, Check_dir_exist_and_build_new_dir
 
-from mogon_base_util import Products, Scraper_util, RW_to_file, PLATFORM, Search_obj
+from RW_util import RW_to_file
+from mogon_step1_scraper import PLATFORM, MogonSearch_obj
 
-class Shop(Search_obj):
+class Shop(MogonSearch_obj):
     def __init__(self):
         self.platform = None  ### 基本
         self.shop_name = None   ### 基本
@@ -90,15 +91,15 @@ if(__name__=="__main__"):
     ##################################################################################
     ### 要有 文字 和 圖片 才能寫進word裡
     ### 這部分的參數要用 絕對位置喔！
-    # RW_to_file.write_prods_from_search_obj_to_word(shop_kurosa)
+    # RW_to_file.write_MogonSearch_to_word(shop_kurosa)
 
     ##################################################################################
-    # RW_to_file.write_prods_from_search_obj(shop_kurosa) ### 把 shop.prods 存入檔案
+    # RW_to_file.write_MogonSearch_obj(shop_kurosa) ### 把 shop.prods 存入檔案
     # print(shop_kurosa)  ### 看一下取得如何
 
     ##################################################################################
     ### 如果已經抓過且有存起來不想花時間重新抓，用這裡的讀取上次存的結果
-    # RW_to_file.read_prods_to_search_obj(shop_kurosa) ### 取得 之前存的 shop.prods 檔案
+    # RW_to_file.read_MogonSearch_obj(shop_kurosa) ### 取得 之前存的 shop.prods 檔案
     # print(shop_kurosa)  ### 看一下取得如何
 
     ##################################################################################
