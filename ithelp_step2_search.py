@@ -23,12 +23,16 @@ class IthelpSearch_obj(Search_base):
     ### get_all_page_elements 已經抽出來寫進 Search_base 裡面囉！
 
 if(__name__=="__main__"):
-    tensorflow30day = IthelpSearch_obj(base_url="https://ithelp.ithome.com.tw/users/20119971/ironman/2254", result_dir = "it30day/tensorflow30day")
+    tensorflow30day_url = "https://ithelp.ithome.com.tw/users/20119971/ironman/2254"
+    tensorflow30day_result_dir = "it30day/tensorflow30day"
+    tensorflow30day = IthelpSearch_obj(base_url=tensorflow30day_url, result_dir=tensorflow30day_result_dir )
     tensorflow30day.get_all_page_elements(write_to_txt=False)
-    Check_dir_exist_and_build("tensorflow30day")
+    Check_dir_exist_and_build(tensorflow30day_result_dir)
     RW_to_file.write_IthelpSearch_obj(tensorflow30day)
 
-    tensorflow30day_good = IthelpSearch_obj(base_url="https://ithelp.ithome.com.tw/users/20112126/ironman/2841", result_dir = "it30day/tensorflow30day_good")
+    tensorflow30day_good_url = "https://ithelp.ithome.com.tw/users/20112126/ironman/2841"
+    tensorflow30day_good_result_dir = "it30day/tensorflow30day_good"
+    tensorflow30day_good = IthelpSearch_obj(base_url=tensorflow30day_good_url, result_dir=tensorflow30day_good_result_dir )
     tensorflow30day_good.get_all_page_elements(write_to_txt=False)
-    Check_dir_exist_and_build("tensorflow30day_good")
+    Check_dir_exist_and_build(tensorflow30day_good_result_dir)
     RW_to_file.write_IthelpSearch_obj(tensorflow30day_good)
