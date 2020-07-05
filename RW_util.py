@@ -7,11 +7,17 @@ class RW_to_file:
         f.close()
 
     @staticmethod
-    def write_IthelpSearch_obj(search_obj):
-        with open( search_obj.result_dir+"/it30days.txt" , "w" , encoding = "utf8") as f:
+    def write_IthelpSearch_containor(search_obj):
+        with open( search_obj.result_dir+"/it30days_full_info.txt" , "w" , encoding = "utf8") as f:
             for go_day_info, day_info in enumerate(search_obj.containor.day_infos):
                 f.write(str(day_info))
                 if(go_day_info != len(search_obj.containor.day_infos)-1): f.write("\n") ### 除了最後一個product外都要換行
+
+    @staticmethod
+    def write_IthelpSearch_obj(search_obj):
+        with open( search_obj.result_dir+"/it30days_just_title.txt" , "w" , encoding = "utf8") as f:
+            f.write(str(search_obj))
+            
 
 
     @staticmethod

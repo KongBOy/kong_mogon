@@ -16,7 +16,9 @@ class IthelpSearch_obj(Search_base):
 
     def __str__(self):
         day_infos_string = ""
-        for go_day_info, day_info in enumerate(self.containor.day_infos): day_infos_string += f"%04i {day_info.title}\n"%go_day_info
+        for go_day_info, day_info in enumerate(self.containor.day_infos): 
+            day_infos_string += day_info.title
+            if(go_day_info != len(self.containor.day_infos)-1): day_infos_string += "\n"
         return day_infos_string
 
     #############################################################################################################################################
@@ -28,6 +30,7 @@ if(__name__=="__main__"):
     tensorflow30day = IthelpSearch_obj(base_url=tensorflow30day_url, result_dir=tensorflow30day_result_dir )
     tensorflow30day.get_all_page_elements(write_to_txt=False)
     Check_dir_exist_and_build(tensorflow30day_result_dir)
+    RW_to_file.write_IthelpSearch_containor(tensorflow30day)
     RW_to_file.write_IthelpSearch_obj(tensorflow30day)
 
     tensorflow30day_good_url = "https://ithelp.ithome.com.tw/users/20112126/ironman/2841"
@@ -35,4 +38,5 @@ if(__name__=="__main__"):
     tensorflow30day_good = IthelpSearch_obj(base_url=tensorflow30day_good_url, result_dir=tensorflow30day_good_result_dir )
     tensorflow30day_good.get_all_page_elements(write_to_txt=False)
     Check_dir_exist_and_build(tensorflow30day_good_result_dir)
+    RW_to_file.write_IthelpSearch_containor(tensorflow30day_good)
     RW_to_file.write_IthelpSearch_obj(tensorflow30day_good)

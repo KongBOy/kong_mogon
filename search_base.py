@@ -12,6 +12,8 @@ class Search_base():
         self.scraper_util = scraper_util
         self.result_dir = containor.result_dir
         self.page_symbol = "&"
+    
+    def __str__(self): pass
 
     def get_all_page_elements(self, write_to_txt=True):
         page_amount = self.scraper_util.get_page_amount(self.base_url) ### 取得 頁數
