@@ -110,43 +110,81 @@ def exp4_write_to_docx_and_use_before_things(platform, keyword, restart_url=Fals
 ### 2020/06/20 最後用這個囉！
 # exp4_write_to_docx_and_use_before_things( PLATFORM.yahooshop, "playwood RIZING", restart_url=True, sort_key="prod_title")
 
-def exp5_manually_search_RIZING_mallet():
-    m_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1001 RIZING")
-    m_3000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-3000 RIZING")
-    m_6011 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6011 RIZING")
-    m_6021 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6021 RIZING")
-    m_7001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-7001 RIZING")
-    m_611 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-611 RIZING")
-    m_2001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-2001 RIZING")
-    m_4000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-4000 RIZING")
-    m_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-5000 RIZING")
-    xg_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood xg RIZING")
-    b_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood b-1 RIZING")
-    xb_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood xb RIZING")
-    m_101 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-101 RIZING")
-    m_201 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-201 RIZING")
-    m_301 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-301 RIZING")
-    m_401 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-401 RIZING")
-    m_501 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-501 RIZING")
-    m_801 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-801 RIZING")
-    m_901 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-901 RIZING")
-    two_tone = Keyword_builder().build(PLATFORM.yahooshop, "playwood two-tone RIZING")
-    m_01 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-01 RIZING")
-    sck = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck RIZING")
-    sc = Keyword_builder().build(PLATFORM.yahooshop, "playwood sc RIZING")
-    
-    searchs = [m_1000, m_3000, m_6011, m_6021, m_7001, m_611, m_2001, m_4000, m_5000, xg_series, 
-               b_series, xb_series, m_101, m_201, m_301, m_401, m_501, m_801, m_901, two_tone, m_01, sck, sc]
-    
-    combine_prods = Keyword_builder().build(PLATFORM.yahooshop, "combine")
+
+####################################################################################################################################
+def Run_searchs(searchs,save_name):
+    combine_prods = Keyword_builder().build(PLATFORM.yahooshop, save_name)
     for search in searchs:
         search.get_all_page_elements(write_to_txt=False) ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
         search.sort_by_key(sort_key="prod_title")
         combine_prods.containor.prods +=  search.containor.prods
     combine_prods.use_c_write_to_word(restart_img=False)
     
+def exp5_manually_search_RIZING_mallet():
+    # m_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1001 RIZING")
+    m_1040 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1041 RIZING")
+    # m_3000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-3000 RIZING")
+    # m_6011 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6011 RIZING")
+    # m_6021 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6021 RIZING")
+    # m_7001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-7001 RIZING")
+    # m_611 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-611 RIZING")
+    # m_2001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-2001 RIZING")
+    # m_4000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-4000 RIZING")
+    # m_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-5000 RIZING")
+    # xg_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood xg RIZING")
+    # b_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood b-1 RIZING")
+    # xb_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood xb RIZING")
+    # m_101 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-101 RIZING")
+    # m_201 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-201 RIZING")
+    # m_301 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-301 RIZING")
+    # m_401 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-401 RIZING")
+    # m_501 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-501 RIZING")
+    # m_801 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-801 RIZING")
+    # m_901 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-901 RIZING")
+    # two_tone = Keyword_builder().build(PLATFORM.yahooshop, "playwood two-tone RIZING")
+    # m_01 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-01 RIZING")
+    # sck = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck RIZING")
+    # sc = Keyword_builder().build(PLATFORM.yahooshop, "playwood sc RIZING")
     
+    searchs = [
+            #    m_1000, m_1040, m_3000, m_6011, m_6021, m_7001, m_611, m_2001, m_4000, m_5000, xg_series, 
+            #    b_series, xb_series, m_101, m_201, m_301, m_401, m_501, m_801, m_901, two_tone, m_01, sck, sc
+              ]
+    Run_searchs(searchs, save_name="combine_mallet_1040")
 exp5_manually_search_RIZING_mallet()
+    
+
+
+def exp5_manually_search_RIZING_timpani():
+    pro_3100 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 3100 RIZING")
+    pro_3200 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 3200 RIZING")
+    pro_3300 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro-3300 RIZING")
+    pro_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 1000 RIZING")
+    pro_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 5000 RIZING")
+    pro_100 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 100 RIZING")
+    pro_300 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 300 RIZING")
+    pro_400 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 400 RIZING")
+    pro_w = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro-w RIZING")
+    pro_t = Keyword_builder().build(PLATFORM.yahooshop, "playwood t-1bq RIZING")
+
+    t11   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t11 RIZING") ### 也會搜到 t13
+    t15   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t15 RIZING")
+    tcf = Keyword_builder().build(PLATFORM.yahooshop, "playwood tcf RIZING")
+    t12 = Keyword_builder().build(PLATFORM.yahooshop, "playwood t12 RIZING") ### 也會搜到 t11, t13, t15，但不完整
+
+
+    tf  = Keyword_builder().build(PLATFORM.yahooshop, "playwood tf RIZING")
+    knx = Keyword_builder().build(PLATFORM.yahooshop, "playwood knx RIZING")
+    
+    searchs = [
+                pro_3100, pro_3200, pro_3300, pro_1000, pro_5000, pro_100, pro_300, pro_400, pro_w, pro_t,
+               t11, t15, tcf, t12, 
+               tf, knx
+                ]
+    Run_searchs(searchs, save_name="combine_timpani")
+# exp5_manually_search_RIZING_timpani()
+
+
 ####################################################################################################################################
 ### 一些以前的例子，還是保留一下好了，以後忘記怎麼 簡單的寫可以參考看看～～
 ### 從 step0 可以找到 適合的 keyword 和 平台，這裡就可專心 寫成word囉！
