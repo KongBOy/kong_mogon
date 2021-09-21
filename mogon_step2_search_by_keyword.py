@@ -9,14 +9,14 @@ class Keyword(MogonSearch_obj):
 
         self.result_dir = None    ### 設定 Keyword的prods_dir放哪裡
 
-    def _init_search_obj(self, base_url, result_dir): ### 初始化 search_obj ( 建立products物件 )
+    def _init_search_obj(self, base_url, result_dir):  ### 初始化 search_obj ( 建立products物件 )
         super().__init__(base_url=base_url, result_dir=result_dir)
 
 
 class Keyword_builder:
     def __init__(self, keyword=None):
         if(keyword is None): self.keyword_obj = Keyword()
-        else: self.keyword_obj = keyword 
+        else: self.keyword_obj = keyword
 
     def _set_and_build_dir(self):
         ### 設定url
@@ -33,27 +33,27 @@ class Keyword_builder:
         self.keyword_obj.platform = platform
         self.keyword_obj.keyword = keyword
         self._set_and_build_dir()
-        return self.keyword_obj 
+        return self.keyword_obj
 
 ### dummy的寫法還是留著好了，給以後的自己當例子參考要怎麼拆開簡單寫
-### example1：走訪3個平台，看看keyword能找到什麼，無腦用法 只能重新開始 爬url存成prods.txt 再 存圖，  
+### example1：走訪3個平台，看看keyword能找到什麼，無腦用法 只能重新開始 爬url存成prods.txt 再 存圖，
 ###             如果想讀之前存的結果時， 爬url和存的兩行註解掉才可以， 要不然 總共會有 read的 和 爬下來的 prods 重複的兩份prods喔！
 def exp1_visit_3_platform_download_imgs_dummy(keyword):
-    key_at_jraku = Keyword_builder().build( PLATFORM.jraku, keyword) ### 建立 keyword物件
+    key_at_jraku = Keyword_builder().build( PLATFORM.jraku, keyword)  ### 建立 keyword物件
     key_at_jraku.get_all_page_elements()                    ### 爬url存成prods.txt
-    RW_to_file.write_MogonSearch_obj(key_at_jraku) ### 把 prods 存入檔案
+    RW_to_file.write_MogonSearch_obj(key_at_jraku)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_jraku)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
     key_at_jraku.get_all_page_prods_img(prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahoobid = Keyword_builder().build( PLATFORM.yahoobid, keyword) ### 建立 keyword物件
+    key_at_yahoobid = Keyword_builder().build( PLATFORM.yahoobid, keyword)  ### 建立 keyword物件
     key_at_yahoobid.get_all_page_elements()                    ### 爬url存成prods.txt
-    RW_to_file.write_MogonSearch_obj(key_at_yahoobid) ### 把 prods 存入檔案
+    RW_to_file.write_MogonSearch_obj(key_at_yahoobid)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_yahoobid)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
     key_at_yahoobid.get_all_page_prods_img(prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahooshop = Keyword_builder().build( PLATFORM.yahooshop, keyword) ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().build( PLATFORM.yahooshop, keyword)  ### 建立 keyword物件
     key_at_yahooshop.get_all_page_elements()                    ### 爬url存成prods.txt
-    RW_to_file.write_MogonSearch_obj(key_at_yahooshop) ### 把 prods 存入檔案
+    RW_to_file.write_MogonSearch_obj(key_at_yahooshop)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_yahooshop)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
     key_at_yahooshop.get_all_page_prods_img(prod_num=False, prod_title=True, shop_name=True, price=True)
 ### exp用法：給 keyword即可
@@ -67,13 +67,13 @@ def exp1_visit_3_platform_download_imgs_dummy(keyword):
 ############################################################################################################################################
 ### example2：走訪3個平台，看看keyword能找到什麼，用一些包好的function，會先看之前有沒有存prods.txt，有就用之前的，沒有重爬
 def exp2_visit_3_platform_download_imgs_and_use_before_things(keyword, restart_url=False):
-    key_at_jraku = Keyword_builder().build( PLATFORM.jraku, keyword) ### 建立 keyword物件
+    key_at_jraku = Keyword_builder().build( PLATFORM.jraku, keyword)  ### 建立 keyword物件
     key_at_jraku.use_b_download_prods_img(restart_url=restart_url, prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahoobid = Keyword_builder().build( PLATFORM.yahoobid, keyword) ### 建立 keyword物件
+    key_at_yahoobid = Keyword_builder().build( PLATFORM.yahoobid, keyword)  ### 建立 keyword物件
     key_at_yahoobid.use_b_download_prods_img(restart_url=restart_url, prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahooshop = Keyword_builder().build( PLATFORM.yahooshop, keyword) ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().build( PLATFORM.yahooshop, keyword)  ### 建立 keyword物件
     key_at_yahooshop.use_b_download_prods_img(restart_url=restart_url, prod_num=False, prod_title=True, shop_name=True, price=True)
 ### exp用法：給 keyword即可
 # exp2_visit_3_platform_download_imgs_and_use_before_things("playwood")
@@ -89,9 +89,9 @@ def exp2_visit_3_platform_download_imgs_and_use_before_things(keyword, restart_u
 ####################################################################################################################################
 ### dummy的寫法還是留著好了，給以後的自己當例子參考要怎麼拆開簡單寫
 def exp3_write_to_docx_dummy(platform, keyword):
-    key_at_yahooshop = Keyword_builder().build( platform, keyword) ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().build( platform, keyword)  ### 建立 keyword物件
     key_at_yahooshop.get_all_page_elements()                    ### 爬url存成prods.txt
-    RW_to_file.write_MogonSearch_obj(key_at_yahooshop) ### 把 prods 存入檔案
+    RW_to_file.write_MogonSearch_obj(key_at_yahooshop)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_yahooshop)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
     key_at_yahooshop.get_all_page_prods_img(prod_num=False, prod_title=True, shop_name=True, price=True)
     RW_to_file.write_MogonSearch_to_word(key_at_yahooshop)
@@ -101,7 +101,7 @@ def exp3_write_to_docx_dummy(platform, keyword):
 
 ####################################################################################################################################
 def exp4_write_to_docx_and_use_before_things(platform, keyword, restart_url=False, restart_img=False, sort_key=None):
-    key_at_yahooshop = Keyword_builder().build( platform, keyword) ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().build( platform, keyword)  ### 建立 keyword物件
     key_at_yahooshop.use_c_write_to_word(restart_url=restart_url, restart_img=restart_img, sort_key=sort_key)
 ### exp用法： 給 platform 和 keyword即可
 #  (restart_url=False, restart_img=False) ### 一開始 prods.txt和prods_img 什麼都沒有的時候 會自動重爬  或者 如果 prods.txt 和 prods_img 都已經確定好對應了，直接寫docx
@@ -112,14 +112,14 @@ def exp4_write_to_docx_and_use_before_things(platform, keyword, restart_url=Fals
 
 
 ####################################################################################################################################
-def Run_searchs(searchs,save_name):
+def Run_searchs(searchs, save_name):
     combine_prods = Keyword_builder().build(PLATFORM.yahooshop, save_name)
     for search in searchs:
-        search.get_all_page_elements(write_to_txt=False) ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
+        search.get_all_page_elements(write_to_txt=False)  ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
         search.sort_by_key(sort_key="prod_title")
         combine_prods.containor.prods +=  search.containor.prods
     combine_prods.use_c_write_to_word(restart_img=False)
-    
+
 def exp5_manually_search_RIZING_mallet():
     # m_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1001 RIZING")
     m_1040 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1041 RIZING")
@@ -167,10 +167,10 @@ def exp5_manually_search_RIZING_timpani():
     pro_w = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro-w RIZING")
     pro_t = Keyword_builder().build(PLATFORM.yahooshop, "playwood t-1bq RIZING")
 
-    t11   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t11 RIZING") ### 也會搜到 t13
+    t11   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t11 RIZING")  ### 也會搜到 t13
     t15   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t15 RIZING")
     tcf = Keyword_builder().build(PLATFORM.yahooshop, "playwood tcf RIZING")
-    t12 = Keyword_builder().build(PLATFORM.yahooshop, "playwood t12 RIZING") ### 也會搜到 t11, t13, t15，但不完整
+    t12 = Keyword_builder().build(PLATFORM.yahooshop, "playwood t12 RIZING")  ### 也會搜到 t11, t13, t15，但不完整
 
 
     tf  = Keyword_builder().build(PLATFORM.yahooshop, "playwood tf RIZING")
@@ -189,7 +189,7 @@ def exp5_manually_search_RIZING_timpani():
 ### 一些以前的例子，還是保留一下好了，以後忘記怎麼 簡單的寫可以參考看看～～
 ### 從 step0 可以找到 適合的 keyword 和 平台，這裡就可專心 寫成word囉！
 # def step1a_download_prods_and_write_file(keyword_obj):
-#     keyword_obj.get_all_page_elements() 
+#     keyword_obj.get_all_page_elements()
 #     RW_to_file.write_MogonSearch_obj(keyword_obj) ### 把 shop.prods 存入檔案
 
 # def step1b_read_from_file_and_download_imgs(keyword_obj):
