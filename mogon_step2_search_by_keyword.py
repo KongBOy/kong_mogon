@@ -125,38 +125,45 @@ def Run_searchs(searchs, save_name):
     combine_prods.use_c_write_to_word(restart_img=False)
 
 def exp5_manually_search_RIZING_mallet():
-    # m_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1001 RIZING")
-    m_1040 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1041 RIZING")
-    # m_3000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-3000 RIZING")
-    # m_6011 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6011 RIZING")
-    # m_6021 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6021 RIZING")
-    # m_7001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-7001 RIZING")
-    # m_611 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-611 RIZING")
-    # m_2001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-2001 RIZING")
-    # m_4000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-4000 RIZING")
-    # m_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-5000 RIZING")
-    # xg_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood xg RIZING")
-    # b_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood b-1 RIZING")
-    # xb_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood xb RIZING")
-    # m_101 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-101 RIZING")
-    # m_201 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-201 RIZING")
-    # m_301 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-301 RIZING")
-    # m_401 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-401 RIZING")
-    # m_501 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-501 RIZING")
-    # m_801 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-801 RIZING")
-    # m_901 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-901 RIZING")
-    # two_tone = Keyword_builder().build(PLATFORM.yahooshop, "playwood two-tone RIZING")
-    # m_01 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-01 RIZING")
-    # sck = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck RIZING")
-    # sc = Keyword_builder().build(PLATFORM.yahooshop, "playwood sc RIZING")
-    
+    m_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1001 RIZING", series="M-1000 Series")
+    m_1040 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1041 RIZING", series="M-1000 Series")
+    m_3000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-3000 RIZING", series="M-3000 Series")
+    m_6011 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6011 RIZING", series="M-6000 Series")
+    m_6021 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6021 RIZING", series="M-6000 Series")
+    m_7001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-7001 RIZING", series="M-7000 Series")
+    m_611 = Keyword_builder().build(PLATFORM.yahooshop,  "playwood m-611 RIZING" , series="M-610 Series")
+    m_2001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-2001 RIZING", series="M-2000 Series")
+    m_4000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-4000 RIZING", series="M-4000 Series")
+    m_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-5000 RIZING", series="M-5000 Series")
+    xg_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood XG RIZING" , series="XG Series")
+    b_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood B-1 RIZING" , series="B Series")
+    xb_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood XB RIZING" , series="XB Series")
+    m_101 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-101 RIZING"  , series="M-100 Series")
+    m_201 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-201 RIZING"  , series="M-200 Series")
+    m_301 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-301 RIZING"  , series="M-300 Series")
+    m_401 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-401 RIZING"  , series="M-400 Series")
+    m_501 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-501 RIZING"  , series="M-500 Series")
+    m_801 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-801 RIZING"  , series="M-800 Series")
+    m_901 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-901 RIZING"  , series="M-900 Series")
+    two_tone = Keyword_builder().build(PLATFORM.yahooshop, "playwood two-tone RIZING", series="Two-Tone Series")
+    m_01 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-01 RIZING"    , series="M-00 Series")
+    sck_x_g = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck-1 RIZING"      , series="SCK Series：Xylophone and Glockenspiel")
+    sck_x_m = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck-02 RIZING"      , series="SCK Series：Xylophone and Marimba")
+    sck_m_v = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck-11 RIZING"      , series="SCK Series：Marimba and Vibraphone")
+    sc = Keyword_builder().build(PLATFORM.yahooshop, "playwood sc RIZING"        , series="Suspended Cymbal Mallet Series")
+    bag1 = Keyword_builder().build(PLATFORM.yahooshop, "playwood DTR-SET RIZING" , series="Drum Training Set")
+    bag2 = Keyword_builder().build(PLATFORM.yahooshop, "playwood MS-EDU-Z RIZING", series="Drum Training Set")
+
+
     searchs = [
-            #    m_1000, m_1040, m_3000, m_6011, m_6021, m_7001, m_611, m_2001, m_4000, m_5000, xg_series, 
-            #    b_series, xb_series, m_101, m_201, m_301, m_401, m_501, m_801, m_901, two_tone, m_01, sck, sc
+               m_1000, m_1040, m_3000, m_6011, m_6021, m_7001, m_611, m_2001, m_4000, m_5000, xg_series,
+               b_series, xb_series, m_101, m_201, m_301, m_401, m_501, m_801, m_901,
+               two_tone, m_01, sck_x_g, sck_x_m, sck_m_v, sc,
+               bag1, bag2
               ]
-    Run_searchs(searchs, save_name="combine_mallet_1040")
+    Run_searchs(searchs, save_name="combine_mallet_20210910")
 exp5_manually_search_RIZING_mallet()
-    
+
 
 
 def exp5_manually_search_RIZING_timpani():
@@ -179,12 +186,14 @@ def exp5_manually_search_RIZING_timpani():
 
     tf  = Keyword_builder().build(PLATFORM.yahooshop, "playwood tf RIZING")
     knx = Keyword_builder().build(PLATFORM.yahooshop, "playwood knx RIZING")
-    
+
     searchs = [
                 pro_3100, pro_3200, pro_3300, pro_1000, pro_5000, pro_100, pro_300, pro_400, pro_w, pro_t,
+                t11, t15, tcf, t12,
                t11, t15, tcf, t12, 
-               tf, knx
-                ]
+                t11, t15, tcf, t12,
+                tf, knx
+              ]
     Run_searchs(searchs, save_name="combine_timpani")
 # exp5_manually_search_RIZING_timpani()
 
