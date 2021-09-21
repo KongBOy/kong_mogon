@@ -1,5 +1,6 @@
 from RW_util import RW_to_file
 from mogon_step2_search_base import PLATFORM , MogonSearch_obj
+import datetime
 
 class Keyword(MogonSearch_obj):
     def __init__(self):
@@ -24,7 +25,8 @@ class Keyword_builder:
         self.keyword_obj.keyword_url = url
 
         ### 設定目的地資料夾
-        self.keyword_obj.result_dir = f"keyword_search/{self.keyword_obj.keyword}/{self.keyword_obj.platform.value}"
+        current_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        self.keyword_obj.result_dir = f"keyword_search/{self.keyword_obj.keyword}/{self.keyword_obj.platform.value}/{current_time}"
 
         ### 建立products物件
         self.keyword_obj._init_search_obj(base_url=self.keyword_obj.keyword_url, result_dir=self.keyword_obj.result_dir)
