@@ -61,6 +61,8 @@ class RW_to_file:
             table.Cell( 2 + go_prod, 2 ).Range.InsertAfter(prod.price)
             table.Cell( 2 + go_prod, 3 ).Range.InsertAfter(prod.prod_url)
             # print(search_obj.result_imgs_dir + "/" + "%04i.jpg"%(go_prod + 1))
+            table.Cell( 2 + go_prod, 4 ).Range.InlineShapes.AddPicture(cur_path + "/" + search_obj.containor.result_imgs_dir + "/" + "%04i.jpg" % (go_prod + 1), False, True)
+            print("docx row:%04i finished~~" % go_prod)
         doc.SaveAs( cur_path + "/" + search_obj.containor.result_dir + "/containor.docx")
         doc.Close()
         # word.Quit()
