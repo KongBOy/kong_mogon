@@ -45,4 +45,3 @@ class Scraper_util:
     @staticmethod
     @abstractmethod
     def get_page_element(in_url, containor): pass
-
