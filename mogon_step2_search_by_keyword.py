@@ -190,8 +190,6 @@ def exp5_manually_search_RIZING_timpani():
     searchs = [
                 pro_3100, pro_3200, pro_3300, pro_1000, pro_5000, pro_100, pro_300, pro_400, pro_w, pro_t,
                 t11, t15, tcf, t12,
-               t11, t15, tcf, t12, 
-                t11, t15, tcf, t12,
                 tf, knx
               ]
     Run_searchs(searchs, save_name="combine_timpani")
