@@ -17,7 +17,7 @@ class RW_to_file:
     def write_IthelpSearch_obj(search_obj):
         with open( search_obj.result_dir + "/it30days_just_title.txt" , "w" , encoding = "utf8") as f:
             f.write(str(search_obj))
-            
+    ############################################################################################################################################
 
 
     @staticmethod
