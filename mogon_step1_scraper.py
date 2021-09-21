@@ -92,7 +92,6 @@ class Mogon_Scraper_util(Scraper_util):
                 else:                               details["shop_name"]  = detail.select('a')[0].text  ### 違禁品<a>只有兩個，且店家會在第1個<a>
                 # print("a_amount", len(detail.select('a')), details["shop_name"])
                 products.add_BaseData( **details )
-        
 
     ##########################################################################################################################################
     @staticmethod
