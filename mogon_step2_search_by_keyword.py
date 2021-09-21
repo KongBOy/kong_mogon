@@ -20,7 +20,7 @@ class Keyword_builder:
 
     def _set_and_build_dir(self):
         ### 設定url
-        url = f"http://www.moganshopping.com/zh_tw/public/search/searchitem.php?action={self.keyword_obj.platform.value}&keyword={self.keyword_obj.keyword}&SearchMethod=multi"
+        url = f"https://www.moganshopping.com/zh_tw/public/search/searchitem.php?action={self.keyword_obj.platform.value}&keyword={self.keyword_obj.keyword}&SearchMethod=multi"
         self.keyword_obj.keyword_url = url
 
         ### 設定目的地資料夾
