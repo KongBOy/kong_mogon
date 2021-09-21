@@ -86,8 +86,8 @@ class Mogon_Scraper_util(Scraper_util):
                 # details.append(detail.select('a')[1].select('span')[0].text)
                 details["price"]    = detail.select('.red')[1].select('span')[2].text
                 details["prod_url"] = detail.select('a')[0].attrs['href']
-                details["img_url"]  =detail.select('img')[0].attrs['src']
-                
+                details["img_url"]  = detail.select('img')[0].attrs['src']
+
                 if(len(detail.select('a')) >= 3 ) : details["shop_name"]  = detail.select('a')[2].text  ### 正常<a>應該有4個，且店家會在第3個<a>
                 else:                               details["shop_name"]  = detail.select('a')[0].text  ### 違禁品<a>只有兩個，且店家會在第1個<a>
                 # print("a_amount", len(detail.select('a')), details["shop_name"])
