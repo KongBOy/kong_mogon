@@ -22,12 +22,12 @@ plat_yahooshop = PLATFORM.yahooshop
 #############################################################################################################################################
 class MogonSearch_obj(Search_base):
     def __init__(self, base_url, result_dir):
-        super().__init__(base_url, Products(result_dir=result_dir), Mogon_Scraper_util)
+        super().__init__(base_url, containor=Products(result_dir=result_dir), Mogon_Scraper_util)
 
 
     def __str__(self):
         prod_string = ""
-        for go_prod, prod in enumerate(self.containor.prods): prod_string += f"%04i {prod.prod_title}\n"%go_prod
+        for go_prod, prod in enumerate(self.containor.prods): prod_string += f"%04i {prod.prod_title}\n" % go_prod
         return prod_string
 
     #############################################################################################################################################
