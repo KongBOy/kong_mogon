@@ -8,6 +8,9 @@ from build_dataset_combine import Check_dir_exist_and_build
 
 from scraper_base_util import BaseData, Scraper_util, BaseData_Browser
 
+
+import urllib3
+urllib3.disable_warnings()
 #############################################################################################################################################
 ### 定義爬下來的東西 長什麼樣子
 class Product(BaseData):
@@ -53,6 +56,7 @@ class Products(BaseData_Browser):
 class Mogon_Scraper_util(Scraper_util):
     @staticmethod
     def get_page_amount(in_url):
+        res = requests.get(in_url, verify=False)  ### request 的 get 去向 server 提出get 來抓取 html
         res.encoding = 'utf8'       ### request 下來的html 要怎麼 encode
         soup = BeautifulSoup(res.text, "lxml")  ### parse request下來的html， 第二個參數是選擇parser，然後要記得 pip install lxml 喔！
 
@@ -70,7 +74,7 @@ class Mogon_Scraper_util(Scraper_util):
 
     @staticmethod
     def get_page_element(in_url, products):
-        res = requests.get(in_url)  ### request 的 get 去向 server 提出get 來抓取 html
+        res = requests.get(in_url, verify=False)  ### request 的 get 去向 server 提出get 來抓取 html
         res.encoding = "utf8"       ### request 下來的html 要怎麼 encode
         soup = BeautifulSoup(res.text, "lxml")  ### parse request下來的html， 第二個參數是選擇parser，然後要記得 pip install lxml 喔！
 
