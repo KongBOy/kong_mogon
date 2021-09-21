@@ -70,7 +70,6 @@ class MogonSearch_obj(Search_base):
             self.use_b_download_prods_img()
         print("containor 和 imgs 都存在")
 
-
     #############################################################################################################################################
     def use_a_download_prods_and_write_file(self, restart_url=False, sort_key=None):
         if  (restart_url is True):
