@@ -14,15 +14,16 @@ urllib3.disable_warnings()
 #############################################################################################################################################
 ### 定義爬下來的東西 長什麼樣子
 class Product(BaseData):
-    def __init__(self, prod_title, price, prod_url, img_url, shop_name):
+    def __init__(self, prod_title, price, prod_url, img_url, shop_name, series):
         self.prod_title = prod_title
         self.price = price
         self.prod_url = prod_url
         self.img_url = img_url
         self.shop_name = shop_name
+        self.series = series
 
     def __str__(self):
-        return "\n".join([self.prod_title, self.price, self.prod_url, self.img_url, self.shop_name])
+        return "\n".join([self.prod_title, self.price, self.prod_url, self.img_url, self.shop_name, self.series])
 
 
 class Products(BaseData_Browser):
@@ -33,20 +34,21 @@ class Products(BaseData_Browser):
         self.result_dir = result_dir   ### products 物件放哪裡
         self.result_imgs_dir = self.result_dir + "/imgs"   ### products的imgs 放哪裡
 
-    def add_BaseData(self, prod_title, price, prod_url, img_url, shop_name):
-        self.prods.append( Product(prod_title, price, prod_url, img_url, shop_name) )
+    def add_BaseData(self, prod_title, price, prod_url, img_url, shop_name, series):
+        self.prods.append( Product(prod_title, price, prod_url, img_url, shop_name, series) )
 
     def read_BaseData_from_file(self, path):
         with open( path , "r" , encoding = "utf8") as f:
             details = {}
             for go_line, line in enumerate(f):
-                if  ( (go_line+1)% 5 == 1 ): details["prod_title"] = line.rstrip("\n")
-                elif( (go_line+1)% 5 == 2 ): details["price"]      = line.rstrip("\n")
-                elif( (go_line+1)% 5 == 3 ): details["prod_url"]   = line.rstrip("\n")
-                elif( (go_line+1)% 5 == 4 ): details["img_url"]   = line.rstrip("\n")
-                elif( (go_line+1)% 5 == 0 ): details["shop_name"]   = line.rstrip("\n")
+                if  ( (go_line + 1) % 6 == 1 ): details["prod_title"] = line.rstrip("\n")
+                elif( (go_line + 1) % 6 == 2 ): details["price"]      = line.rstrip("\n")
+                elif( (go_line + 1) % 6 == 3 ): details["prod_url"]   = line.rstrip("\n")
+                elif( (go_line + 1) % 6 == 4 ): details["img_url"]    = line.rstrip("\n")
+                elif( (go_line + 1) % 6 == 5 ): details["shop_name"]  = line.rstrip("\n")
+                elif( (go_line + 1) % 6 == 0 ): details["series"]     = line.rstrip("\n")
 
-                if( (go_line+1)% 5 == 0 ):
+                if( (go_line + 1) % 6 == 0 ):
                     self.add_BaseData( **details )
                     del details
                     details = {}

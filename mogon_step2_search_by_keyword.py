@@ -7,6 +7,7 @@ class Keyword(MogonSearch_obj):
         self.platform = None     ### 基本
         self.keyword = None      ### 基本
         self.keyword_url = None  ### 由上兩個基本來設定
+        self.series = None  ### 2021/09/12 新加的attr
 
         self.result_dir = None    ### 設定 Keyword的prods_dir放哪裡
 
@@ -31,9 +32,10 @@ class Keyword_builder:
         ### 建立products物件
         self.keyword_obj._init_search_obj(base_url=self.keyword_obj.keyword_url, result_dir=self.keyword_obj.result_dir)
 
-    def build(self, platform, keyword):
+    def build(self, platform, keyword, series=None):
         self.keyword_obj.platform = platform
         self.keyword_obj.keyword = keyword
+        self.keyword_obj.series = series
         self._set_and_build_dir()
         return self.keyword_obj
 
