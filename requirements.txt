@@ -1,3 +1,10 @@
+requests
 beautifulsoup4
 lxml
 opencv-python
+tqdm
+matplotlib
+pywin32
+python-docx
+
+### 手動 git clone https://github.com/KongBOy/kong_util.git
