@@ -6,12 +6,12 @@ import time
 from kong_util.build_dataset_combine import Check_dir_exist_and_build
 
 class Search_base():
-    def __init__(self, base_url, containor, scraper_util, page_symbol="&"):
+    def __init__(self, base_url, containor, scraper_util, page_symbol="&", series=None):
         self.base_url = base_url   ### 紀錄 從哪個base_url 來抓 products
         self.containor = containor
         self.scraper_util = scraper_util
         self.result_dir = containor.result_dir
-        self.page_symbol = "&"
+        self.series = series
 
     def __str__(self): pass
 
@@ -21,7 +21,7 @@ class Search_base():
         # page_amount = 2 ### debug用
         for go_page in range(page_amount):  ### 走訪每一頁，把products撈出來
             full_url = self.base_url + self.page_symbol + "page=" + str(go_page + 1)  ### page是從1開始
-            self.scraper_util.get_page_element( full_url, self.containor )  ### 把 容器 丟進去function內 渲染，比 mogon 多了一個go_page參數喔
+            self.scraper_util.get_page_element( full_url, self.containor, series=self.series )  ### 把 容器 丟進去function內 渲染，比 mogon 多了一個go_page參數喔
 
             print( f"{full_url} read ok!!!!")
             if(write_to_txt):

@@ -75,7 +75,7 @@ class Mogon_Scraper_util(Scraper_util):
         return page_amount
 
     @staticmethod
-    def get_page_element(in_url, products):
+    def get_page_element(in_url, products, series=None):
         res = requests.get(in_url, verify=False)  ### request 的 get 去向 server 提出get 來抓取 html
         res.encoding = "utf8"       ### request 下來的html 要怎麼 encode
         soup = BeautifulSoup(res.text, "lxml")  ### parse request下來的html， 第二個參數是選擇parser，然後要記得 pip install lxml 喔！
@@ -92,6 +92,8 @@ class Mogon_Scraper_util(Scraper_util):
 
                 if(len(detail.select('a')) >= 3 ) : details["shop_name"]  = detail.select('a')[2].text  ### 正常<a>應該有4個，且店家會在第3個<a>
                 else:                               details["shop_name"]  = detail.select('a')[0].text  ### 違禁品<a>只有兩個，且店家會在第1個<a>
+                
+                details["series"] = series
                 # print("a_amount", len(detail.select('a')), details["shop_name"])
                 products.add_BaseData( **details )
 

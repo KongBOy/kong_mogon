@@ -21,8 +21,8 @@ plat_yahooshop = PLATFORM.yahooshop
 
 #############################################################################################################################################
 class MogonSearch_obj(Search_base):
-    def __init__(self, base_url, result_dir):
-        super().__init__(base_url, containor=Products(result_dir=result_dir), Mogon_Scraper_util)
+    def __init__(self, base_url, result_dir, series=None):
+        super().__init__(base_url, containor=Products(result_dir=result_dir), scraper_util=Mogon_Scraper_util, series=series)
 
 
     def __str__(self):
