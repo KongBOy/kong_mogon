@@ -14,7 +14,7 @@ class Shop(MogonSearch_obj):
 
         self.prods_dir = None ### 設定 shop的prods_dir放哪裡
 
-    def _init_search_obj(self, base_url, prods_dir): ### 初始化 search_obj ( 建立products物件)
+    def _init_super_search_obj(self, base_url, prods_dir): ### 初始化 search_obj ( 建立products物件)
         super().__init__(base_url=base_url, prods_dir=prods_dir)
 
 class Shop_builder:
@@ -34,9 +34,9 @@ class Shop_builder:
         self.shop.prods_dir = f"shop_search/{self.shop.shop_name}/{self.shop.platform.value}"
 
         ### 建立products物件
-        self.shop._init_search_obj(base_url=self.shop.shop_url, prods_dir=self.shop.prods_dir)
+        self.shop._init_super_search_obj(base_url=self.shop.shop_url, prods_dir=self.shop.prods_dir)
 
-    def build(self, platform, shop_name):
+    def set_attr(self, platform, shop_name):
         self.shop.platform = platform
         self.shop.shop_name = shop_name
         self._set_and_build_shop_dir()
@@ -54,13 +54,13 @@ class Shop_product_filter:
 
 ###############################################################################
 ### 建立shop物件
-shop_kurosa       = Shop_builder().build( PLATFORM.jraku, "kurosawahonten") ### 建立 shop_kurosa，但爬下來沒有且不像樂器店
-# shop_rizing       = Shop_builder().build( PLATFORM.yahooshop, "rizing") ### 建立 rizing ### 好像全部都是
-# shop_auc_rizing   = Shop_builder().build( PLATFORM.jraku, "auc-rizing") ### 建立 auc-rizing
-# shop_merry_net    = Shop_builder().build( PLATFORM.jraku, "merry-net") ### 建立 merry-net
-# shop_soarsound    = Shop_builder().build( PLATFORM.jraku, "soarsound") ### 建立 soarsound ### 有m3001
-# shop_mikidj       = Shop_builder().build( PLATFORM.jraku, "mikidj") ### 建立 mikidj ### 有m3001
-# shop_deeplearning = Shop_builder().build( PLATFORM.jraku, "deeplearning") ### 建立 deeplearning ### 有m3001，但爬下來沒有且不像樂器店
+shop_kurosa       = Shop_builder().set_attr( PLATFORM.jraku, "kurosawahonten") ### 建立 shop_kurosa，但爬下來沒有且不像樂器店
+# shop_rizing       = Shop_builder().set_attr( PLATFORM.yahooshop, "rizing") ### 建立 rizing ### 好像全部都是
+# shop_auc_rizing   = Shop_builder().set_attr( PLATFORM.jraku, "auc-rizing") ### 建立 auc-rizing
+# shop_merry_net    = Shop_builder().set_attr( PLATFORM.jraku, "merry-net") ### 建立 merry-net
+# shop_soarsound    = Shop_builder().set_attr( PLATFORM.jraku, "soarsound") ### 建立 soarsound ### 有m3001
+# shop_mikidj       = Shop_builder().set_attr( PLATFORM.jraku, "mikidj") ### 建立 mikidj ### 有m3001
+# shop_deeplearning = Shop_builder().set_attr( PLATFORM.jraku, "deeplearning") ### 建立 deeplearning ### 有m3001，但爬下來沒有且不像樂器店
 
 if(__name__=="__main__"):
     ### 看看各個 shop的 產品價錢 和 產品名稱，可以從這裡看 wants使用的title

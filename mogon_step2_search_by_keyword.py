@@ -11,8 +11,8 @@ class Keyword(MogonSearch_obj):
 
         self.result_dir = None    ### 設定 Keyword的prods_dir放哪裡
 
-    def _init_search_obj(self, base_url, result_dir):  ### 初始化 search_obj ( 建立products物件 )
-        super().__init__(base_url=base_url, result_dir=result_dir)
+    def _init_super_search_obj(self, base_url, result_dir):  ### 初始化 search_obj ( 建立products物件 )
+        super().__init__(base_url=base_url, result_dir=result_dir, series=self.series)
 
 
 class Keyword_builder:
@@ -20,7 +20,7 @@ class Keyword_builder:
         if(keyword is None): self.keyword_obj = Keyword()
         else: self.keyword_obj = keyword
 
-    def _set_and_build_dir(self):
+    def _build(self):
         ### 設定url
         url = f"https://www.moganshopping.com/zh_tw/public/search/searchitem.php?action={self.keyword_obj.platform.value}&keyword={self.keyword_obj.keyword}&SearchMethod=multi"
         self.keyword_obj.keyword_url = url
@@ -30,32 +30,32 @@ class Keyword_builder:
         self.keyword_obj.result_dir = f"keyword_search/{self.keyword_obj.keyword}/{self.keyword_obj.platform.value}/{current_time}"
 
         ### 建立products物件
-        self.keyword_obj._init_search_obj(base_url=self.keyword_obj.keyword_url, result_dir=self.keyword_obj.result_dir)
+        self.keyword_obj._init_super_search_obj(base_url=self.keyword_obj.keyword_url, result_dir=self.keyword_obj.result_dir)
 
-    def build(self, platform, keyword, series=None):
+    def set_attr(self, platform, keyword, series=None):
         self.keyword_obj.platform = platform
         self.keyword_obj.keyword = keyword
         self.keyword_obj.series = series
-        self._set_and_build_dir()
+        self._build()
         return self.keyword_obj
 
 ### dummy的寫法還是留著好了，給以後的自己當例子參考要怎麼拆開簡單寫
 ### example1：走訪3個平台，看看keyword能找到什麼，無腦用法 只能重新開始 爬url存成prods.txt 再 存圖，
 ###             如果想讀之前存的結果時， 爬url和存的兩行註解掉才可以， 要不然 總共會有 read的 和 爬下來的 prods 重複的兩份prods喔！
 def exp1_visit_3_platform_download_imgs_dummy(keyword):
-    key_at_jraku = Keyword_builder().build( PLATFORM.jraku, keyword)  ### 建立 keyword物件
+    key_at_jraku = Keyword_builder().set_attr( PLATFORM.jraku, keyword)  ### 建立 keyword物件
     key_at_jraku.get_all_page_elements()                    ### 爬url存成prods.txt
     RW_to_file.write_MogonSearch_obj(key_at_jraku)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_jraku)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
     key_at_jraku.get_all_page_prods_img(prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahoobid = Keyword_builder().build( PLATFORM.yahoobid, keyword)  ### 建立 keyword物件
+    key_at_yahoobid = Keyword_builder().set_attr( PLATFORM.yahoobid, keyword)  ### 建立 keyword物件
     key_at_yahoobid.get_all_page_elements()                    ### 爬url存成prods.txt
     RW_to_file.write_MogonSearch_obj(key_at_yahoobid)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_yahoobid)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
     key_at_yahoobid.get_all_page_prods_img(prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahooshop = Keyword_builder().build( PLATFORM.yahooshop, keyword)  ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().set_attr( PLATFORM.yahooshop, keyword)  ### 建立 keyword物件
     key_at_yahooshop.get_all_page_elements()                    ### 爬url存成prods.txt
     RW_to_file.write_MogonSearch_obj(key_at_yahooshop)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_yahooshop)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
@@ -71,13 +71,13 @@ def exp1_visit_3_platform_download_imgs_dummy(keyword):
 ############################################################################################################################################
 ### example2：走訪3個平台，看看keyword能找到什麼，用一些包好的function，會先看之前有沒有存prods.txt，有就用之前的，沒有重爬
 def exp2_visit_3_platform_download_imgs_and_use_before_things(keyword, restart_url=False):
-    key_at_jraku = Keyword_builder().build( PLATFORM.jraku, keyword)  ### 建立 keyword物件
+    key_at_jraku = Keyword_builder().set_attr( PLATFORM.jraku, keyword)  ### 建立 keyword物件
     key_at_jraku.use_b_download_prods_img(restart_url=restart_url, prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahoobid = Keyword_builder().build( PLATFORM.yahoobid, keyword)  ### 建立 keyword物件
+    key_at_yahoobid = Keyword_builder().set_attr( PLATFORM.yahoobid, keyword)  ### 建立 keyword物件
     key_at_yahoobid.use_b_download_prods_img(restart_url=restart_url, prod_num=False, prod_title=True, shop_name=True, price=True)
 
-    key_at_yahooshop = Keyword_builder().build( PLATFORM.yahooshop, keyword)  ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().set_attr( PLATFORM.yahooshop, keyword)  ### 建立 keyword物件
     key_at_yahooshop.use_b_download_prods_img(restart_url=restart_url, prod_num=False, prod_title=True, shop_name=True, price=True)
 ### exp用法：給 keyword即可
 # exp2_visit_3_platform_download_imgs_and_use_before_things("playwood")
@@ -93,7 +93,7 @@ def exp2_visit_3_platform_download_imgs_and_use_before_things(keyword, restart_u
 ####################################################################################################################################
 ### dummy的寫法還是留著好了，給以後的自己當例子參考要怎麼拆開簡單寫
 def exp3_write_to_docx_dummy(platform, keyword):
-    key_at_yahooshop = Keyword_builder().build( platform, keyword)  ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().set_attr( platform, keyword)  ### 建立 keyword物件
     key_at_yahooshop.get_all_page_elements()                    ### 爬url存成prods.txt
     RW_to_file.write_MogonSearch_obj(key_at_yahooshop)  ### 把 prods 存入檔案
     # RW_to_file.read_MogonSearch_obj(key_at_yahooshop)    ### 取得 之前存的 prods 檔案 ### 這行註解打開的話，要把前兩行註解掉喔！
@@ -105,7 +105,7 @@ def exp3_write_to_docx_dummy(platform, keyword):
 
 ####################################################################################################################################
 def exp4_write_to_docx_and_use_before_things(platform, keyword, restart_url=False, restart_img=False, sort_key=None):
-    key_at_yahooshop = Keyword_builder().build( platform, keyword)  ### 建立 keyword物件
+    key_at_yahooshop = Keyword_builder().set_attr( platform, keyword)  ### 建立 keyword物件
     key_at_yahooshop.use_c_write_to_word(restart_url=restart_url, restart_img=restart_img, sort_key=sort_key)
 ### exp用法： 給 platform 和 keyword即可
 #  (restart_url=False, restart_img=False) ### 一開始 prods.txt和prods_img 什麼都沒有的時候 會自動重爬  或者 如果 prods.txt 和 prods_img 都已經確定好對應了，直接寫docx
@@ -117,42 +117,42 @@ def exp4_write_to_docx_and_use_before_things(platform, keyword, restart_url=Fals
 
 ####################################################################################################################################
 def Run_searchs(searchs, save_name):
-    combine_prods = Keyword_builder().build(PLATFORM.yahooshop, save_name)
+    combine_prods = Keyword_builder().set_attr(PLATFORM.yahooshop, save_name)
     for search in searchs:
-        search.get_all_page_elements(write_to_txt=False)  ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
+        search.get_all_page_elements(write_to_txt=True)  ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
         search.sort_by_key(sort_key="prod_title")
         combine_prods.containor.prods +=  search.containor.prods
     combine_prods.use_c_write_to_word(restart_img=False)
 
 def exp5_manually_search_RIZING_mallet():
-    m_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1001 RIZING", series="M-1000 Series")
-    m_1040 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-1041 RIZING", series="M-1000 Series")
-    m_3000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-3000 RIZING", series="M-3000 Series")
-    m_6011 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6011 RIZING", series="M-6000 Series")
-    m_6021 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-6021 RIZING", series="M-6000 Series")
-    m_7001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-7001 RIZING", series="M-7000 Series")
-    m_611 = Keyword_builder().build(PLATFORM.yahooshop,  "playwood m-611 RIZING" , series="M-610 Series")
-    m_2001 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-2001 RIZING", series="M-2000 Series")
-    m_4000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-4000 RIZING", series="M-4000 Series")
-    m_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-5000 RIZING", series="M-5000 Series")
-    xg_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood XG RIZING" , series="XG Series")
-    b_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood B-1 RIZING" , series="B Series")
-    xb_series = Keyword_builder().build(PLATFORM.yahooshop, "playwood XB RIZING" , series="XB Series")
-    m_101 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-101 RIZING"  , series="M-100 Series")
-    m_201 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-201 RIZING"  , series="M-200 Series")
-    m_301 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-301 RIZING"  , series="M-300 Series")
-    m_401 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-401 RIZING"  , series="M-400 Series")
-    m_501 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-501 RIZING"  , series="M-500 Series")
-    m_801 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-801 RIZING"  , series="M-800 Series")
-    m_901 = Keyword_builder().build(PLATFORM.yahooshop, "playwood M-901 RIZING"  , series="M-900 Series")
-    two_tone = Keyword_builder().build(PLATFORM.yahooshop, "playwood two-tone RIZING", series="Two-Tone Series")
-    m_01 = Keyword_builder().build(PLATFORM.yahooshop, "playwood m-01 RIZING"    , series="M-00 Series")
-    sck_x_g = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck-1 RIZING"      , series="SCK Series：Xylophone and Glockenspiel")
-    sck_x_m = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck-02 RIZING"      , series="SCK Series：Xylophone and Marimba")
-    sck_m_v = Keyword_builder().build(PLATFORM.yahooshop, "playwood sck-11 RIZING"      , series="SCK Series：Marimba and Vibraphone")
-    sc = Keyword_builder().build(PLATFORM.yahooshop, "playwood sc RIZING"        , series="Suspended Cymbal Mallet Series")
-    bag1 = Keyword_builder().build(PLATFORM.yahooshop, "playwood DTR-SET RIZING" , series="Drum Training Set")
-    bag2 = Keyword_builder().build(PLATFORM.yahooshop, "playwood MS-EDU-Z RIZING", series="Drum Training Set")
+    m_1000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-1001 RIZING"  , series="M-1000 Series")
+    m_1040    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-1041 RIZING"  , series="M-1000 Series")
+    m_3000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-3000 RIZING"  , series="M-3000 Series")
+    m_6011    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-6011 RIZING"  , series="M-6000 Series")
+    m_6021    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-6021 RIZING"  , series="M-6000 Series")
+    m_7001    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-7001 RIZING"  , series="M-7000 Series")
+    m_611     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood m-611 RIZING"   , series="M-610 Series")
+    m_2001    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-2001 RIZING"  , series="M-2000 Series")
+    m_4000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-4000 RIZING"  , series="M-4000 Series")
+    m_5000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-5000 RIZING"  , series="M-5000 Series")
+    xg_series = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood XG RIZING"      , series="XG Series")
+    b_series  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood B-1 RIZING"     , series="B Series")
+    xb_series = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood XB RIZING"      , series="XB Series")
+    m_101     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-101 RIZING"   , series="M-100 Series")
+    m_201     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-201 RIZING"   , series="M-200 Series")
+    m_301     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-301 RIZING"   , series="M-300 Series")
+    m_401     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-401 RIZING"   , series="M-400 Series")
+    m_501     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-501 RIZING"   , series="M-500 Series")
+    m_801     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-801 RIZING"   , series="M-800 Series")
+    m_901     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-901 RIZING"   , series="M-900 Series")
+    two_tone  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood two-tone RIZING", series="Two-Tone Series")
+    m_01      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood m-01 RIZING"    , series="M-00 Series")
+    sck_x_g   = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood sck-1 RIZING"   , series="SCK Series：Xylophone and Glockenspiel")
+    sck_x_m   = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood sck-02 RIZING"  , series="SCK Series：Xylophone and Marimba")
+    sck_m_v   = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood sck-11 RIZING"  , series="SCK Series：Marimba and Vibraphone")
+    sc        = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood sc RIZING"      , series="Suspended Cymbal Mallet Series")
+    bag1      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood DTR-SET RIZING" , series="Drum Training Set")
+    bag2      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood MS-EDU-Z RIZING", series="Drum Training Set")
 
 
     searchs = [
@@ -167,25 +167,25 @@ exp5_manually_search_RIZING_mallet()
 
 
 def exp5_manually_search_RIZING_timpani():
-    pro_3100 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 3100 RIZING")
-    pro_3200 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 3200 RIZING")
-    pro_3300 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro-3300 RIZING")
-    pro_1000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 1000 RIZING")
-    pro_5000 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 5000 RIZING")
-    pro_100 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 100 RIZING")
-    pro_300 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 300 RIZING")
-    pro_400 = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro 400 RIZING")
-    pro_w = Keyword_builder().build(PLATFORM.yahooshop, "playwood pro-w RIZING")
-    pro_t = Keyword_builder().build(PLATFORM.yahooshop, "playwood t-1bq RIZING")
+    pro_3100 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 3100 RIZING")
+    pro_3200 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 3200 RIZING")
+    pro_3300 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro-3300 RIZING")
+    pro_1000 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 1000 RIZING")
+    pro_5000 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 5000 RIZING")
+    pro_100  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 100 RIZING")
+    pro_300  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 300 RIZING")
+    pro_400  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 400 RIZING")
+    pro_w    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro-w RIZING")
+    pro_t    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t-1bq RIZING")
 
-    t11   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t11 RIZING")  ### 也會搜到 t13
-    t15   = Keyword_builder().build(PLATFORM.yahooshop, "playwood t15 RIZING")
-    tcf = Keyword_builder().build(PLATFORM.yahooshop, "playwood tcf RIZING")
-    t12 = Keyword_builder().build(PLATFORM.yahooshop, "playwood t12 RIZING")  ### 也會搜到 t11, t13, t15，但不完整
+    t11      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t11 RIZING")  ### 也會搜到 t13
+    t15      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t15 RIZING")
+    tcf      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tcf RIZING")
+    t12      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t12 RIZING")  ### 也會搜到 t11, t13, t15，但不完整
 
 
-    tf  = Keyword_builder().build(PLATFORM.yahooshop, "playwood tf RIZING")
-    knx = Keyword_builder().build(PLATFORM.yahooshop, "playwood knx RIZING")
+    tf       = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf RIZING")
+    knx      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood knx RIZING")
 
     searchs = [
                 pro_3100, pro_3200, pro_3300, pro_1000, pro_5000, pro_100, pro_300, pro_400, pro_w, pro_t,
@@ -216,5 +216,5 @@ def exp5_manually_search_RIZING_timpani():
 #     # step1b_read_from_file_and_download_imgs(keyword_obj)
 #     step1c_read_from_file_and_write_to_word(keyword_obj)
 
-# playwood_rizing = Keyword_builder().build( PLATFORM.yahooshop, "playwood RIZING") ### 建立 key_at_yahooshop，但爬下來沒有且不像樂器店
+# playwood_rizing = Keyword_builder().set_attr( PLATFORM.yahooshop, "playwood RIZING") ### 建立 key_at_yahooshop，但爬下來沒有且不像樂器店
 # step1_combine(playwood_rizing)
