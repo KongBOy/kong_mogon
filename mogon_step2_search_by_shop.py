@@ -1,7 +1,7 @@
 import time
 import sys 
-sys.path.append(r"C:\Users\TKU\Desktop\kong_model2\kong_util")
-from build_dataset_combine import Check_dir_exist_and_build, Check_dir_exist_and_build_new_dir
+# sys.path.append(r"C:\Users\TKU\Desktop\kong_model2\kong_util")
+from kong_util.build_dataset_combine import Check_dir_exist_and_build, Check_dir_exist_and_build_new_dir
 
 from RW_util import RW_to_file
 from mogon_step1_scraper import PLATFORM, MogonSearch_obj
