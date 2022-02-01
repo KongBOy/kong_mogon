@@ -11,6 +11,7 @@ class Search_base():
         self.containor = containor
         self.scraper_util = scraper_util
         self.result_dir = containor.result_dir
+        self.page_symbol = page_symbol
         self.series = series
 
     def __str__(self): pass
