@@ -11,6 +11,7 @@ from try_hyperlink import add_hyperlink_kong
 import datetime
 import time
 
+
 def _is_url_string(text):
     if( "http" in text[:5].lower()): return True
     else: return False
@@ -57,11 +58,11 @@ def title_style(cell, text, cell_width):   _set_style(cell, text, cell_width, bo
 def prod_style(cell, text, cell_width, font_size=Pt(11), font_r=0, font_g=0, font_b=0):    _set_style(cell, text, cell_width, bold=False, font_name="新細明體", font_size=font_size, font_r=font_r, font_g=font_g, font_b=font_b)
 
 
-sleep_time = 10
+open_docx_keep_time = 10
 
+import os
 dst_dir = "try_word"
-current_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-
+os.makedirs(f'{dst_dir}', exist_ok=True)
 ################################################################################################################################
 docx = Document()
 section = docx.sections[0]
@@ -100,10 +101,11 @@ for _ in range(5):
         prod_style(prod_r_cols[0], "PlayWood/プレイウッド　吉岡孝悦モデル マリンバ用キーボードマレット　M-1001R", average_cell_width)
         prod_style(prod_r_cols[1], "1,321 NTD", average_cell_width, font_size=Pt(14))
         prod_style(prod_r_cols[2], "https://www.moganshopping.com/zh_tw/public/jyahooshopping/auctionItem.php?Code=rizing_pw-m-1001r&categoryid=1", average_cell_width, font_size=Pt(8), font_r=5, font_g=99, font_b=193)
-        prod_style(prod_r_cols[3], "0001.jpg", average_cell_width)
+        prod_style(prod_r_cols[3], "try_0001.jpg", average_cell_width)
 
 
 ################################################################################################################################
+current_time = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 docx.save(f'{dst_dir}/{current_time}.docx')
 
 
@@ -111,8 +113,9 @@ docx.save(f'{dst_dir}/{current_time}.docx')
 ### 自動打開看結果，等三秒後自動關閉
 from win32com import client
 word = client.gencache.EnsureDispatch('word.application')
-word.Documents.Open(f"C:/Users/TKU/Desktop/m/{dst_dir}/{current_time}.docx")  ### 一定要絕對位置
+# word.Documents.Open(f"C:/Users/TKU/Desktop/m/{dst_dir}/{current_time}.docx")  ### 一定要絕對位置
+word.Documents.Open(f"C:/Users/HP820G1/Desktop/kong_mogon/{dst_dir}/{current_time}.docx")  ### 一定要絕對位置
 word.Visible = 1
 word.DisplayAlerts = 0
-time.sleep(sleep_time)
+time.sleep(open_docx_keep_time)
 word.Quit()
