@@ -1,9 +1,9 @@
 
 import time
 
-import sys
-sys.path.append(r"C:\Users\TKU\Desktop\kong_model2\kong_util")
-from build_dataset_combine import Check_dir_exist_and_build
+# import sys
+# sys.path.append(r"C:\Users\TKU\Desktop\kong_model2\kong_util")
+from kong_util.build_dataset_combine import Check_dir_exist_and_build
 
 class Search_base():
     def __init__(self, base_url, containor, scraper_util, page_symbol="&"):

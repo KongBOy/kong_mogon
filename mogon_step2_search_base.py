@@ -2,10 +2,10 @@ import time
 
 from RW_util import RW_to_file
 from mogon_step1_scraper import Products, Mogon_Scraper_util
-import sys
-sys.path.append(r"C:\Users\TKU\Desktop\kong_model2\kong_util")
-from build_dataset_combine import Check_dir_exist_and_build
-from util import get_dir_certain_file_name
+# import sys
+# sys.path.append("./kong_util")
+from kong_util.build_dataset_combine import Check_dir_exist_and_build
+from kong_util.util import get_dir_certain_file_names
 
 from search_base import Search_base
 
@@ -62,7 +62,7 @@ class MogonSearch_obj(Search_base):
                 RW_to_file.write_MogonSearch_obj(self)
 
     def _check_imgs_downloaded(self, sort_key=None):
-        file_names = get_dir_certain_file_name(self.containor.result_imgs_dir, ".jpg")
+        file_names = get_dir_certain_file_names(self.containor.result_imgs_dir, ".jpg")
         print("file_names", file_names)
         if( len(file_names) == 0 ):  ### 如果 prods_imgs資料夾下面是空的，用use_b去下載imgs
             print("圖片還沒有下載，現在自動去下載 RAM內products 的 imgs 囉！")
