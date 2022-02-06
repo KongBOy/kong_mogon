@@ -1,3 +1,5 @@
+from try_docx import Docx_util
+
 class RW_to_file:
     @staticmethod
     def write_soup_to_file(soup, file_name):  ### 把整個 soup寫進html來看 比較好看
@@ -66,3 +68,11 @@ class RW_to_file:
         doc.SaveAs( cur_path + "/" + search_obj.containor.result_dir + "/containor.docx")
         doc.Close()
         # word.Quit()
+        
+    @staticmethod
+    def write_MogonSearch_to_word2(search_obj):
+        import os
+        cur_path = os.getcwd()
+        docx_util = Docx_util()
+        docx_util.try_mogon( dst_dir=cur_path + "/" + search_obj.containor.result_dir, search_obj=search_obj)
+

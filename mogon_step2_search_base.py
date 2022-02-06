@@ -99,4 +99,4 @@ class MogonSearch_obj(Search_base):
             elif(restart_img is False):  ### 如果存在 prods.txt 和 prods_img，就直接寫docx(但不保證 prods.txt 和 prods_img 對應關係，請事前確認)
                 self._check_prods_in_ram_or_file(sort_key=sort_key)  ### 先看看之前的prods紀錄，有的話讀取之前的prods來抓prods_img，沒有的話重新從網路上抓prods並存入檔案
                 self._check_imgs_downloaded(sort_key=sort_key)       ### 先看看之前的prods_img資料夾是不是空的，空的話就重新下載，非空不做事，也要注意一下不保證存在的imgs 和 目前的 prods 是有對影的喔，用前請先自行確認一定對應
-        RW_to_file.write_MogonSearch_to_word(self)  ### 寫docx
+        RW_to_file.write_MogonSearch_to_word2(self)  ### 寫docx

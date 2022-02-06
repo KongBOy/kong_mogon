@@ -119,7 +119,7 @@ def exp4_write_to_docx_and_use_before_things(platform, keyword, restart_url=Fals
 def Run_searchs(searchs, save_name):
     combine_prods = Keyword_builder().set_attr(PLATFORM.yahooshop, save_name)
     for search in searchs:
-        search.get_all_page_elements(write_to_txt=True)  ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
+        search.get_all_page_elements(write_to_txt=False)  ### 可以控制 各個小search_obj 有沒有需要存個別的prods.txt，要注意有存的話會多很多資料夾很雜喔！
         search.sort_by_key(sort_key="prod_title")
         combine_prods.containor.prods +=  search.containor.prods
     combine_prods.use_c_write_to_word(restart_img=False)
