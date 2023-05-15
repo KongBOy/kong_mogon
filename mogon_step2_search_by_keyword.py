@@ -125,14 +125,14 @@ def Run_searchs(searchs, save_name):
     combine_prods.use_c_write_to_word(restart_img=False)
 
 def exp5_manually_search_RIZING_mallet():
-    m_1000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-1001 RIZING"  , series="M-1000 Series")
-    m_1040    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-1041 RIZING"  , series="M-1000 Series")
+    m_1000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-1001 RIZING"  , series="M-1000 Series (R：藤棒)")
+    m_1040    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-1041 RIZING"  , series="M-1000 Series (R：藤棒)")
     m_3000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-3000 RIZING"  , series="M-3000 Series")
     m_6011    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-6011 RIZING"  , series="M-6000 Series")
     m_6021    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-6021 RIZING"  , series="M-6000 Series")
     m_7001    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-7001 RIZING"  , series="M-7000 Series")
     m_611     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood m-611 RIZING"   , series="M-610 Series")
-    m_2001    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-2001 RIZING"  , series="M-2000 Series")
+    m_2001    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-2001 RIZING"  , series="M-2000 Series (R：藤棒)")
     m_4000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-4000 RIZING"  , series="M-4000 Series")
     m_5000    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood M-5000 RIZING"  , series="M-5000 Series")
     xg_series = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood XG RIZING"      , series="XG Series")
@@ -162,38 +162,60 @@ def exp5_manually_search_RIZING_mallet():
                bag1, bag2
               ]
     Run_searchs(searchs, save_name="combine_mallet_20210910")
-exp5_manually_search_RIZING_mallet()
+# exp5_manually_search_RIZING_mallet()
 
 
 
 def exp5_manually_search_RIZING_timpani():
-    pro_3100 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 3100 RIZING")
-    pro_3200 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 3200 RIZING")
-    pro_3300 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro-3300 RIZING")
-    pro_1000 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 1000 RIZING")
-    pro_5000 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 5000 RIZING")
-    pro_100  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 100 RIZING")
-    pro_300  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 300 RIZING")
-    pro_400  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 400 RIZING")
-    pro_w    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro-w RIZING")
-    pro_t    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t-1bq RIZING")
+    pro_3100 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 3100 RIZING", series="Pro-3100 Classical Series (Type R：Smooth roll stick, elegant but with healthy body)")
+    pro_3200 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 3200 RIZING", series="Pro-3200 Premium Series")
+    pro_3300 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro-3300 RIZING", series="Pro-3300 Flannel Series (Type R：Traditional German style, with heavier head)")
+    pro_1000 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 1000 RIZING", series="Pro-1000 Series")
+    pro_5000 = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 5000 RIZING", series="Pro-5000 Series")
+    pro_100  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 100 RIZING", series="Pro-100 Series")
+    pro_300  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 300 RIZING", series="Pro-300 Series")
+    pro_400  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro 400 RIZING", series="Pro-400 Series")
+    pro_w    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood pro-w RIZING", series="Pro-W, HF, K1, K2 Series")
+    pro_t    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t-1bq RIZING", series="T-BQ Series")
 
-    t11      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t11 RIZING")  ### 也會搜到 t13
-    t15      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t15 RIZING")
-    tcf      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tcf RIZING")
-    t12      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t12 RIZING")  ### 也會搜到 t11, t13, t15，但不完整
+    t11      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t11 RIZING", series="T11, 13 Series")  ### 也會搜到 t13
+    t15      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t15 RIZING", series="T15 Series")
+    tcf      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tcf RIZING", series="TCF Series (K：Cork Core, W：Wood Core)")
+    t12      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood t12 RIZING", series="T12 Series")  ### 也會搜到 t11, t13, t15，但不完整
 
 
-    tf       = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf RIZING")
-    knx      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood knx RIZING")
+    tf_11    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-11 RIZING", series="TF-10, 20 Series")
+    tf_12    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-12 RIZING", series="TF-10, 20 Series")
+    tf_13    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-13 RIZING", series="TF-10, 20 Series")
+    tf_14    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-14 RIZING", series="TF-10, 20 Series")
+    tf_21    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-21 RIZING", series="TF-10, 20 Series")
+    tf_22    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-22 RIZING", series="TF-10, 20 Series")
+    tf_23    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-23 RIZING", series="TF-10, 20 Series")
+    tf_24    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-24 RIZING", series="TF-10, 20 Series")
+    tf_1pro  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-1pro RIZING", series="TF-10, 20 Series")
+    tf_2pro  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-2pro RIZING", series="TF-10, 20 Series")
+    tf_3pro  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-3pro RIZING", series="TF-10, 20 Series")
+    tf_4pro  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-4pro RIZING", series="TF-10, 20 Series")
+    tf_5pro  = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-5pro RIZING", series="TF-10, 20 Series")
+
+    tf_1     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-1 RIZING", series="TF-0, CF Series")
+    tf_2     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-2 RIZING", series="TF-0, CF Series")
+    tf_3     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-3 RIZING", series="TF-0, CF Series")
+    tf_4     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-4 RIZING", series="TF-0, CF Series")
+    tf_5     = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-5 RIZING", series="TF-0, CF Series")
+    tf_cf    = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood tf-cf RIZING", series="TF-0, CF Series")
+    knx      = Keyword_builder().set_attr(PLATFORM.yahooshop, "playwood knx RIZING", series="KONEXIO KNX Series")
 
     searchs = [
                 pro_3100, pro_3200, pro_3300, pro_1000, pro_5000, pro_100, pro_300, pro_400, pro_w, pro_t,
                 t11, t15, tcf, t12,
-                tf, knx
+                tf_11, tf_12, tf_13, tf_14, tf_21, tf_22, tf_23, tf_24,
+                tf_1pro, tf_2pro, tf_3pro, tf_4pro, tf_5pro,
+                tf_1, tf_2, tf_3, tf_4, tf_5, tf_cf,
+                knx
               ]
     Run_searchs(searchs, save_name="combine_timpani")
-# exp5_manually_search_RIZING_timpani()
+exp5_manually_search_RIZING_timpani()
 
 
 ####################################################################################################################################
